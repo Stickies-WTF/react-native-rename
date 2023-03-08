@@ -7,7 +7,6 @@ import { decode, encode } from 'html-entities';
 import path from 'path';
 import replace from 'replace-in-file';
 import shell from 'shelljs';
-import checkForUpdate from 'update-check';
 
 import pjson from '../package.json';
 import {
@@ -23,7 +22,6 @@ import {
   getOtherUpdateFilesContentOptions,
   iosPlist,
   iosXcodeproj,
-  packageJson,
 } from './paths';
 
 dotenv.config();
@@ -416,7 +414,6 @@ export const updateOtherFilesContent = async ({
   newIosBundleID,
 }) => {
   const appJsonContent = getJsonContent(appJson);
-  const packageJsonContent = getJsonContent(packageJson);
 
   const filesContentOptions = getOtherUpdateFilesContentOptions({
     currentName: appJsonContent?.name || currentIosName,
@@ -425,7 +422,6 @@ export const updateOtherFilesContent = async ({
     newPathContentStr,
     appJsonName: appJsonContent?.name,
     appJsonDisplayName: appJsonContent?.displayName,
-    packageJsonName: packageJsonContent?.name,
     newAndroidBundleID,
     newIosBundleID,
   });
@@ -468,26 +464,3 @@ If you like this tool, please give it a star on GitHub: https://github.com/juned
   );
 };
 
-export const gitStageChanges = () => {
-  shell.cd(APP_PATH);
-  shell.exec('git config --local core.autocrlf false');
-  shell.exec('git config --local core.safecrlf false');
-  shell.exec('git add .');
-};
-
-export const checkPackageUpdate = async () => {
-  try {
-    const res = await checkForUpdate(pjson);
-
-    if (res?.latest) {
-      console.log();
-      console.log(chalk.green.bold(`A new version of "${pjson.name}" is available.`));
-      console.log('Current version:', chalk.yellow(pjson.version));
-      console.log('Latest version:', chalk.yellow(res.latest));
-      console.log(chalk.cyan(`You can update by running: npm install -g ${pjson.name}.`));
-      console.log();
-    }
-  } catch (error) {
-    console.log('Error checking for update:\n%O', error);
-  }
-};

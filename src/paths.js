@@ -7,7 +7,6 @@ export const iosXcodeproj = 'ios/*.xcodeproj';
 export const iosPbxProject = 'ios/*.xcodeproj/project.pbxproj';
 export const iosPlist = 'ios/*/Info.plist';
 export const appJson = 'app.json';
-export const packageJson = 'package.json';
 export const buildPaths = [
   'ios/build/*',
   'android/.gradle/*',
@@ -302,11 +301,6 @@ export const getOtherUpdateFilesContentOptions = ({
       to: newName,
     },
     {
-      files: 'package.json',
-      from: [new RegExp(`${packageJsonName}`, 'gi'), new RegExp(`${currentPathContentStr}`, 'gi')],
-      to: cleanNewPathContentStr,
-    },
-    {
       files: 'app.json',
       from: [
         new RegExp(`${appJsonName}`, 'gi'),
@@ -315,7 +309,6 @@ export const getOtherUpdateFilesContentOptions = ({
         /\"package\"\: \"(.*)\"/,
         /\"bundleIdentifier\"\: \"(.*)\"/,
         /\"name\"\: \"(.*)\"/,
-        /\"slug\"\: \"(.*)\"/,
       ],
       to: [
         newName,
@@ -324,7 +317,6 @@ export const getOtherUpdateFilesContentOptions = ({
         `"package": "${newAndroidBundleID}"`,
         `"bundleIdentifier": "${newIosBundleID}"`,
         `"name": "${newName}"`,
-        `"slug": "${newName}"`,
       ],
     },
   ];

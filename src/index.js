@@ -5,13 +5,11 @@ import pjson from '../package.json';
 import {
   bundleIDToPath,
   checkGitRepoStatus,
-  checkPackageUpdate,
   cleanBuilds,
   getAndroidCurrentBundleID,
   getAndroidCurrentName,
   getIosCurrentName,
   getIosXcodeProjectPathName,
-  gitStageChanges,
   renameAndroidBundleIDFolders,
   renameIosFoldersAndFiles,
   showSuccessMessages,
@@ -130,8 +128,6 @@ program
 
     cleanBuilds();
     showSuccessMessages(newName);
-    gitStageChanges();
-    checkPackageUpdate();
   });
 
 // If no arguments are passed, show help

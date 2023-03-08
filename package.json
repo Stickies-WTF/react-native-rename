@@ -1,5 +1,8 @@
 {
-  "name": "react-native-rename",
+  "name": "@Stickies-WTF/react-native-rename",
+  "publishConfig": {
+    "@Stickies-WTF:registry": "https://npm.pkg.github.com"
+  },
   "version": "3.2.12",
   "description": "Rename react-native app with just one command",
   "main": "lib/index.js",
@@ -25,7 +28,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/junedomingo/react-native-rename.git"
+    "url": "https://github.com/Stickies-WTF/react-native-rename.git"
   },
   "keywords": [
     "react-native",
