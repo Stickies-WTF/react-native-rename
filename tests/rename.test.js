@@ -3,7 +3,7 @@ const shell = require('shelljs');
 const path = require('path');
 
 const run = (cwd, args) => {
-  shell.exec(`node ../../../lib/index.js ${args}`, {
+  shell.exec(`node ../../../lib/index.js ${args} --stageFiles`, {
     cwd,
     silent: true,
   });

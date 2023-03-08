@@ -10,6 +10,7 @@ import {
   getAndroidCurrentName,
   getIosCurrentName,
   getIosXcodeProjectPathName,
+  gitStageChanges,
   renameAndroidBundleIDFolders,
   renameIosFoldersAndFiles,
   showSuccessMessages,
@@ -42,6 +43,7 @@ program
     `Path and content string that can be used in replacing folders, files and their content. Make sure it doesn't include any special characters.`
   )
   .option('--skipGitStatusCheck', 'Skip git repo status check')
+  .option('--stageFiles', 'Stage the changed files')
   .action(async newName => {
     validateCreation();
     validateGitRepo();
@@ -127,6 +129,11 @@ program
     });
 
     cleanBuilds();
+
+    if (options.stageFiles) {
+      gitStageChanges();
+    }
+
     showSuccessMessages(newName);
   });
 
