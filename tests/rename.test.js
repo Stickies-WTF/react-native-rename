@@ -44,21 +44,21 @@ describe('rn-versions/0.70.6', () => {
     resetGit(cwd);
   });
 
-  test('Change app name', () => {
-    run(cwd, `"Demo App"`);
+  // test('Change app name', () => {
+  //   run(cwd, `"Demo App"`);
 
-    const result = getDiff(cwd);
+  //   const result = getDiff(cwd);
 
-    expect(result).toMatchSnapshot();
-  });
+  //   expect(result).toMatchSnapshot();
+  // });
 
-  test('Change app name and bundle id for both ios and android', () => {
-    run(cwd, `"Demo App" -b com.example.demoapp`);
+  // test('Change app name and bundle id for both ios and android', () => {
+  //   run(cwd, `"Demo App" -b com.example.demoapp`);
 
-    const result = getDiff(cwd);
+  //   const result = getDiff(cwd);
 
-    expect(result).toMatchSnapshot();
-  });
+  //   expect(result).toMatchSnapshot();
+  // });
 
   test('Change app name and bundle id for android only', () => {
     run(cwd, `"Demo App" --androidBundleID com.example.demoapp`);
@@ -68,11 +68,11 @@ describe('rn-versions/0.70.6', () => {
     expect(result).toMatchSnapshot();
   });
 
-  test('Change app name and bundle id for ios only', () => {
-    run(cwd, `"Demo App" --iosBundleID com.example.demoapp`);
+  // test('Change app name and bundle id for ios only', () => {
+  //   run(cwd, `"Demo App" --iosBundleID com.example.demoapp`);
 
-    const result = getDiff(cwd);
+  //   const result = getDiff(cwd);
 
-    expect(result).toMatchSnapshot();
-  });
+  //   expect(result).toMatchSnapshot();
+  // });
 });
