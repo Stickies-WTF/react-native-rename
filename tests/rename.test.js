@@ -2,8 +2,12 @@
 const shell = require('shelljs');
 const path = require('path');
 
+const libPath = path.join(__dirname, '../lib');
+
 const run = (cwd, args) => {
-  shell.exec(`node ../../../lib/index.js ${args} --stageFiles`, {
+  const command = `node ${libPath}/index.js ${args} --stageFiles --skipGitStatusCheck`;
+
+  shell.exec(command, {
     cwd,
     silent: true,
   });
