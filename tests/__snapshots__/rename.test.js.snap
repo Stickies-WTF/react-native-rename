@@ -75,7 +75,7 @@ diff --git a/tests/rn-versions/0.70.6/ios/AwesomeProject.xcodeproj/project.pbxpr
 similarity index 72%
 rename from tests/rn-versions/0.70.6/ios/AwesomeProject.xcodeproj/project.pbxproj
 rename to tests/rn-versions/0.70.6/ios/DemoApp.xcodeproj/project.pbxproj
-index 5f9197e..6b762d9 100644
+index 7a0fe27..7543782 100644
 --- a/tests/rn-versions/0.70.6/ios/AwesomeProject.xcodeproj/project.pbxproj
 +++ b/tests/rn-versions/0.70.6/ios/DemoApp.xcodeproj/project.pbxproj
 @@ -7,12 +7,12 @@
@@ -505,7 +505,7 @@ index 5f9197e..6b762d9 100644
 @@ -523,7 +525,7 @@
  					"-lc++",
  				);
- 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+ 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier).Keyboard";
 -				PRODUCT_NAME = AwesomeProject;
 +				PRODUCT_NAME = "DemoApp";
  				SWIFT_VERSION = 5.0;
@@ -717,17 +717,6 @@ index 4f966bb..1075335 100644
      inherit! :complete
      # Pods for testing
    end
-diff --git a/tests/rn-versions/0.70.6/package.json b/tests/rn-versions/0.70.6/package.json
-index ffe8c2d..6b6235d 100644
---- a/tests/rn-versions/0.70.6/package.json
-+++ b/tests/rn-versions/0.70.6/package.json
-@@ -1,5 +1,5 @@
- {
--  "name": "awesomeproject",
-+  "name": "demoapp",
-   "version": "0.0.1",
-   "private": true,
-   "scripts": {
 "
 `;
 
@@ -979,7 +968,7 @@ diff --git a/tests/rn-versions/0.70.6/ios/AwesomeProject.xcodeproj/project.pbxpr
 similarity index 72%
 rename from tests/rn-versions/0.70.6/ios/AwesomeProject.xcodeproj/project.pbxproj
 rename to tests/rn-versions/0.70.6/ios/DemoApp.xcodeproj/project.pbxproj
-index 5f9197e..6b762d9 100644
+index 7a0fe27..7543782 100644
 --- a/tests/rn-versions/0.70.6/ios/AwesomeProject.xcodeproj/project.pbxproj
 +++ b/tests/rn-versions/0.70.6/ios/DemoApp.xcodeproj/project.pbxproj
 @@ -7,12 +7,12 @@
@@ -1409,7 +1398,7 @@ index 5f9197e..6b762d9 100644
 @@ -523,7 +525,7 @@
  					"-lc++",
  				);
- 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+ 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier).Keyboard";
 -				PRODUCT_NAME = AwesomeProject;
 +				PRODUCT_NAME = "DemoApp";
  				SWIFT_VERSION = 5.0;
@@ -1621,17 +1610,6 @@ index 4f966bb..1075335 100644
      inherit! :complete
      # Pods for testing
    end
-diff --git a/tests/rn-versions/0.70.6/package.json b/tests/rn-versions/0.70.6/package.json
-index ffe8c2d..6b6235d 100644
---- a/tests/rn-versions/0.70.6/package.json
-+++ b/tests/rn-versions/0.70.6/package.json
-@@ -1,5 +1,5 @@
- {
--  "name": "awesomeproject",
-+  "name": "demoapp",
-   "version": "0.0.1",
-   "private": true,
-   "scripts": {
 "
 `;
 
@@ -1880,10 +1858,10 @@ index af2b546..be164fd 100644
  }
 \\ No newline at end of file
 diff --git a/tests/rn-versions/0.70.6/ios/AwesomeProject.xcodeproj/project.pbxproj b/tests/rn-versions/0.70.6/ios/DemoApp.xcodeproj/project.pbxproj
-similarity index 71%
+similarity index 72%
 rename from tests/rn-versions/0.70.6/ios/AwesomeProject.xcodeproj/project.pbxproj
 rename to tests/rn-versions/0.70.6/ios/DemoApp.xcodeproj/project.pbxproj
-index 5f9197e..b144211 100644
+index 7a0fe27..7543782 100644
 --- a/tests/rn-versions/0.70.6/ios/AwesomeProject.xcodeproj/project.pbxproj
 +++ b/tests/rn-versions/0.70.6/ios/DemoApp.xcodeproj/project.pbxproj
 @@ -7,12 +7,12 @@
@@ -2535,17 +2513,6 @@ index 4f966bb..1075335 100644
      inherit! :complete
      # Pods for testing
    end
-diff --git a/tests/rn-versions/0.70.6/package.json b/tests/rn-versions/0.70.6/package.json
-index ffe8c2d..6b6235d 100644
---- a/tests/rn-versions/0.70.6/package.json
-+++ b/tests/rn-versions/0.70.6/package.json
-@@ -1,5 +1,5 @@
- {
--  "name": "awesomeproject",
-+  "name": "demoapp",
-   "version": "0.0.1",
-   "private": true,
-   "scripts": {
 "
 `;
 
@@ -2621,10 +2588,10 @@ index af2b546..be164fd 100644
  }
 \\ No newline at end of file
 diff --git a/tests/rn-versions/0.70.6/ios/AwesomeProject.xcodeproj/project.pbxproj b/tests/rn-versions/0.70.6/ios/DemoApp.xcodeproj/project.pbxproj
-similarity index 71%
+similarity index 72%
 rename from tests/rn-versions/0.70.6/ios/AwesomeProject.xcodeproj/project.pbxproj
 rename to tests/rn-versions/0.70.6/ios/DemoApp.xcodeproj/project.pbxproj
-index 5f9197e..b144211 100644
+index 7a0fe27..7543782 100644
 --- a/tests/rn-versions/0.70.6/ios/AwesomeProject.xcodeproj/project.pbxproj
 +++ b/tests/rn-versions/0.70.6/ios/DemoApp.xcodeproj/project.pbxproj
 @@ -7,12 +7,12 @@
