@@ -1858,10 +1858,10 @@ index af2b546..be164fd 100644
  }
 \\ No newline at end of file
 diff --git a/tests/rn-versions/0.70.6/ios/AwesomeProject.xcodeproj/project.pbxproj b/tests/rn-versions/0.70.6/ios/DemoApp.xcodeproj/project.pbxproj
-similarity index 72%
+similarity index 71%
 rename from tests/rn-versions/0.70.6/ios/AwesomeProject.xcodeproj/project.pbxproj
 rename to tests/rn-versions/0.70.6/ios/DemoApp.xcodeproj/project.pbxproj
-index 7a0fe27..7543782 100644
+index 7a0fe27..be15a54 100644
 --- a/tests/rn-versions/0.70.6/ios/AwesomeProject.xcodeproj/project.pbxproj
 +++ b/tests/rn-versions/0.70.6/ios/DemoApp.xcodeproj/project.pbxproj
 @@ -7,12 +7,12 @@
@@ -2588,10 +2588,10 @@ index af2b546..be164fd 100644
  }
 \\ No newline at end of file
 diff --git a/tests/rn-versions/0.70.6/ios/AwesomeProject.xcodeproj/project.pbxproj b/tests/rn-versions/0.70.6/ios/DemoApp.xcodeproj/project.pbxproj
-similarity index 72%
+similarity index 71%
 rename from tests/rn-versions/0.70.6/ios/AwesomeProject.xcodeproj/project.pbxproj
 rename to tests/rn-versions/0.70.6/ios/DemoApp.xcodeproj/project.pbxproj
-index 7a0fe27..7543782 100644
+index 7a0fe27..be15a54 100644
 --- a/tests/rn-versions/0.70.6/ios/AwesomeProject.xcodeproj/project.pbxproj
 +++ b/tests/rn-versions/0.70.6/ios/DemoApp.xcodeproj/project.pbxproj
 @@ -7,12 +7,12 @@
