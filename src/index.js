@@ -18,6 +18,7 @@ import {
   updateAndroidFilesContentBundleID,
   updateAndroidNameInStringsXml,
   updateIosFilesContent,
+  getIosCurrentBundleId,
   updateIosNameInInfoPlist,
   updateOtherFilesContent,
   validateCreation,
@@ -79,6 +80,10 @@ program
 
     const currentAndroidName = getAndroidCurrentName();
     const currentIosName = getIosCurrentName();
+    const currentIosBundleId = getIosCurrentBundleId();
+
+    console.log('currentIosBundleId', currentIosBundleId);
+
     const currentPathContentStr = getIosXcodeProjectPathName();
     const newPathContentStr = pathContentStr || newName;
     const currentAndroidBundleID = getAndroidCurrentBundleID();
@@ -86,6 +91,7 @@ program
     await renameIosFoldersAndFiles(newPathContentStr);
     await updateIosFilesContent({
       currentName: currentIosName,
+      currentBundleId: currentIosBundleId,
       newName,
       currentPathContentStr,
       newPathContentStr,

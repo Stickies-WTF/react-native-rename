@@ -35,6 +35,7 @@ export const getIosFoldersAndFilesPaths = ({ currentPathContentStr, newPathConte
 
 export const getIosUpdateFilesContentOptions = ({
   currentName,
+  currentBundleId,
   newName,
   currentPathContentStr,
   newPathContentStr,
@@ -147,12 +148,12 @@ export const getIosUpdateFilesContentOptions = ({
         // Replace bundle ID
         if (newBundleID) {
           input = input.replace(
-            /PRODUCT_BUNDLE_IDENTIFIER = "(.*)"/g,
-            `PRODUCT_BUNDLE_IDENTIFIER = "${newBundleID}"`
+            new RegExp(`PRODUCT_BUNDLE_IDENTIFIER = "${currentBundleId}`, 'g'),
+            `PRODUCT_BUNDLE_IDENTIFIER = "${newBundleID}`
           );
 
           input = input.replace(
-            /PRODUCT_BUNDLE_IDENTIFIER = (.*)/g,
+            new RegExp(`PRODUCT_BUNDLE_IDENTIFIER = ${currentBundleId}`, 'g'),
             `PRODUCT_BUNDLE_IDENTIFIER = "${newBundleID}";`
           );
         }
