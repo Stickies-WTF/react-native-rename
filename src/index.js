@@ -5,6 +5,7 @@ import pjson from '../package.json';
 import {
   bundleIDToPath,
   checkGitRepoStatus,
+  checkPackageUpdate,
   cleanBuilds,
   getAndroidCurrentBundleID,
   getAndroidCurrentName,
@@ -44,7 +45,12 @@ program
     `Path and content string that can be used in replacing folders, files and their content. Make sure it doesn't include any special characters.`
   )
   .option('--skipGitStatusCheck', 'Skip git repo status check')
-  .option('--stageFiles', 'Stage the changed files')
+  .option('--doNotStageFiles', 'Do not stage the changed files')
+  .option(
+    '--usePartialIosBundleIdReplacement',
+    'When to replace the ios bundle id be replacing the previous bundle id string with the new one, leaving partial strings'
+  )
+  .option('--skipPackageJson', 'Skip modifying the package.json file')
   .action(async newName => {
     validateCreation();
     validateGitRepo();
@@ -81,9 +87,6 @@ program
     const currentAndroidName = getAndroidCurrentName();
     const currentIosName = getIosCurrentName();
     const currentIosBundleId = getIosCurrentBundleId();
-
-    console.log('currentIosBundleId', currentIosBundleId);
-
     const currentPathContentStr = getIosXcodeProjectPathName();
     const newPathContentStr = pathContentStr || newName;
     const currentAndroidBundleID = getAndroidCurrentBundleID();
@@ -96,6 +99,7 @@ program
       currentPathContentStr,
       newPathContentStr,
       newBundleID: newIosBundleID || newBundleID,
+      usePartialIosBundleIdReplacement: !!options.doNotStageFiles,
     });
 
     await updateIosNameInInfoPlist(newName);
@@ -135,12 +139,13 @@ program
     });
 
     cleanBuilds();
+    showSuccessMessages(newName);
 
-    if (options.stageFiles) {
+    if (!options.doNotStageFiles) {
       gitStageChanges();
     }
 
-    showSuccessMessages(newName);
+    checkPackageUpdate();
   });
 
 // If no arguments are passed, show help

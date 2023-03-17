@@ -7,6 +7,7 @@ import { decode, encode } from 'html-entities';
 import path from 'path';
 import replace from 'replace-in-file';
 import shell from 'shelljs';
+import checkForUpdate from 'update-check';
 
 import pjson from '../package.json';
 import {
@@ -22,6 +23,7 @@ import {
   getOtherUpdateFilesContentOptions,
   iosPlist,
   iosXcodeproj,
+  packageJson,
   iosPbxProject,
 } from './paths';
 
@@ -293,37 +295,39 @@ export const renameIosFoldersAndFiles = async newPathContentStr => {
 };
 
 export const updateFilesContent = async filesContentOptions => {
-  const promises = filesContentOptions.map(async (option, index) => {
-    await delay(index * PROMISE_DELAY);
+  const promises = filesContentOptions
+    .filter(option => !option?.skip)
+    .map(async (option, index) => {
+      await delay(index * PROMISE_DELAY);
 
-    const isOptionFilesString = typeof option.files === 'string';
-    const updatedOption = {
-      ...option,
-      countMatches: true,
-      allowEmptyPaths: true,
-      files: isOptionFilesString
-        ? path.join(APP_PATH, option.files)
-        : option.files.map(file => path.join(APP_PATH, file)),
-    };
+      const isOptionFilesString = typeof option.files === 'string';
+      const updatedOption = {
+        ...option,
+        countMatches: true,
+        allowEmptyPaths: true,
+        files: isOptionFilesString
+          ? path.join(APP_PATH, option.files)
+          : option.files.map(file => path.join(APP_PATH, file)),
+      };
 
-    try {
-      const results = await replace(updatedOption);
-      results.map(result => {
-        const hasChanged = result.hasChanged;
-        const message = `${hasChanged ? 'UPDATED' : 'NOT UPDATED'} (${pluralize(
-          result.numMatches || 0,
-          'match'
-        )})`;
-        console.log(
-          toRelativePath(result.file),
-          hasChanged ? chalk.green(message) : chalk.yellow(message)
-        );
-      });
-    } catch (error) {
-      const filePath = error.message.replace('No files match the pattern:', '').trim();
-      console.log(toRelativePath(filePath), chalk.yellow('NOT FOUND'));
-    }
-  });
+      try {
+        const results = await replace(updatedOption);
+        results.map(result => {
+          const hasChanged = result.hasChanged;
+          const message = `${hasChanged ? 'UPDATED' : 'NOT UPDATED'} (${pluralize(
+            result.numMatches || 0,
+            'match'
+          )})`;
+          console.log(
+            toRelativePath(result.file),
+            hasChanged ? chalk.green(message) : chalk.yellow(message)
+          );
+        });
+      } catch (error) {
+        const filePath = error.message.replace('No files match the pattern:', '').trim();
+        console.log(toRelativePath(filePath), chalk.yellow('NOT FOUND'));
+      }
+    });
 
   await Promise.all(promises);
 };
@@ -335,6 +339,7 @@ export const updateIosFilesContent = async ({
   currentPathContentStr,
   newPathContentStr,
   newBundleID,
+  usePartialIosBundleIdReplacement,
 }) => {
   const filesContentOptions = getIosUpdateFilesContentOptions({
     currentName,
@@ -343,6 +348,7 @@ export const updateIosFilesContent = async ({
     currentPathContentStr,
     newPathContentStr,
     newBundleID,
+    usePartialIosBundleIdReplacement,
   });
   await updateFilesContent(filesContentOptions);
 };
@@ -432,6 +438,7 @@ export const updateOtherFilesContent = async ({
   newIosBundleID,
 }) => {
   const appJsonContent = getJsonContent(appJson);
+  const packageJsonContent = getJsonContent(packageJson);
 
   const filesContentOptions = getOtherUpdateFilesContentOptions({
     currentName: appJsonContent?.name || currentIosName,
@@ -440,6 +447,7 @@ export const updateOtherFilesContent = async ({
     newPathContentStr,
     appJsonName: appJsonContent?.name,
     appJsonDisplayName: appJsonContent?.displayName,
+    packageJsonName: packageJsonContent?.name,
     newAndroidBundleID,
     newIosBundleID,
   });
@@ -487,4 +495,21 @@ export const gitStageChanges = () => {
   shell.exec('git config --local core.autocrlf false');
   shell.exec('git config --local core.safecrlf false');
   shell.exec('git add .');
+};
+
+export const checkPackageUpdate = async () => {
+  try {
+    const res = await checkForUpdate(pjson);
+
+    if (res?.latest) {
+      console.log();
+      console.log(chalk.green.bold(`A new version of "${pjson.name}" is available.`));
+      console.log('Current version:', chalk.yellow(pjson.version));
+      console.log('Latest version:', chalk.yellow(res.latest));
+      console.log(chalk.cyan(`You can update by running: npm install -g ${pjson.name}.`));
+      console.log();
+    }
+  } catch (error) {
+    console.log('Error checking for update:\n%O', error);
+  }
 };

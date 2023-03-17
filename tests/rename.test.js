@@ -5,7 +5,7 @@ const path = require('path');
 const libPath = path.join(__dirname, '../lib');
 
 const run = (cwd, args) => {
-  const command = `node ${libPath}/index.js ${args} --stageFiles --skipGitStatusCheck`;
+  const command = `node ${libPath}/index.js ${args} --skipGitStatusCheck`;
 
   shell.exec(command, {
     cwd,
@@ -75,4 +75,12 @@ describe('rn-versions/0.70.6', () => {
 
     expect(result).toMatchSnapshot();
   });
+
+  // test('Change app name and bundle id for ios only with --usePartialIosBundleIdReplacement', () => {
+  //   run(cwd, `"Demo App" --iosBundleID com.example.demoapp --usePartialIosBundleIdReplacement`);
+
+  //   const result = getDiff(cwd);
+
+  //   expect(result).toMatchSnapshot();
+  // });
 });

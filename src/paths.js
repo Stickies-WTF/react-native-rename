@@ -7,6 +7,7 @@ export const iosXcodeproj = 'ios/*.xcodeproj';
 export const iosPbxProject = 'ios/*.xcodeproj/project.pbxproj';
 export const iosPlist = 'ios/*/Info.plist';
 export const appJson = 'app.json';
+export const packageJson = 'package.json';
 export const buildPaths = [
   'ios/build/*',
   'android/.gradle/*',
@@ -40,6 +41,7 @@ export const getIosUpdateFilesContentOptions = ({
   currentPathContentStr,
   newPathContentStr,
   newBundleID,
+  usePartialIosBundleIdReplacement,
 }) => {
   const encodedNewName = encodeXmlEntities(newName);
   const encodedCurrentName = encodeXmlEntities(currentName);
@@ -147,9 +149,21 @@ export const getIosUpdateFilesContentOptions = ({
 
         // Replace bundle ID
         if (newBundleID) {
-          const escapedCurrentBundleId = currentBundleId.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+          if (usePartialIosBundleIdReplacement) {
+            const escapedCurrentBundleId = currentBundleId.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 
-          input = input.replace(new RegExp(escapedCurrentBundleId, 'g'), newBundleID);
+            input = input.replace(new RegExp(escapedCurrentBundleId, 'g'), newBundleID);
+          } else {
+            input = input.replace(
+              /PRODUCT_BUNDLE_IDENTIFIER = "(.*)"/g,
+              `PRODUCT_BUNDLE_IDENTIFIER = "${newBundleID}"`
+            );
+
+            input = input.replace(
+              /PRODUCT_BUNDLE_IDENTIFIER = (.*)/g,
+              `PRODUCT_BUNDLE_IDENTIFIER = "${newBundleID}";`
+            );
+          }
         }
 
         return input;
@@ -286,6 +300,7 @@ export const getOtherUpdateFilesContentOptions = ({
   packageJsonName,
   newAndroidBundleID,
   newIosBundleID,
+  skipPackageJson,
 }) => {
   const cleanNewPathContentStr = newPathContentStr.replace(/\s/g, '').toLowerCase();
 
@@ -296,6 +311,12 @@ export const getOtherUpdateFilesContentOptions = ({
       to: newName,
     },
     {
+      files: 'package.json',
+      from: [new RegExp(`${packageJsonName}`, 'gi'), new RegExp(`${currentPathContentStr}`, 'gi')],
+      to: cleanNewPathContentStr,
+      skip: !!skipPackageJson,
+    },
+    {
       files: 'app.json',
       from: [
         new RegExp(`${appJsonName}`, 'gi'),
@@ -304,6 +325,7 @@ export const getOtherUpdateFilesContentOptions = ({
         /\"package\"\: \"(.*)\"/,
         /\"bundleIdentifier\"\: \"(.*)\"/,
         /\"name\"\: \"(.*)\"/,
+        /\"slug\"\: \"(.*)\"/,
       ],
       to: [
         newName,
@@ -312,6 +334,7 @@ export const getOtherUpdateFilesContentOptions = ({
         `"package": "${newAndroidBundleID}"`,
         `"bundleIdentifier": "${newIosBundleID}"`,
         `"name": "${newName}"`,
+        `"slug": "${newName}"`,
       ],
     },
   ];
