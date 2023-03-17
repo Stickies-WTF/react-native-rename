@@ -2300,9 +2300,9 @@ index 7a0fe27..7543782 100644
  					"-ObjC",
  					"-lc++",
  				);
--				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier).Keyboard";
 -				PRODUCT_NAME = AwesomeProject;
-+				PRODUCT_BUNDLE_IDENTIFIER = "com.example.demoapp";
++				PRODUCT_BUNDLE_IDENTIFIER = "com.example.demoapp.Keyboard";
 +				PRODUCT_NAME = "DemoApp";
  				SWIFT_VERSION = 5.0;
  				VERSIONING_SYSTEM = "apple-generic";
@@ -3030,9 +3030,9 @@ index 7a0fe27..7543782 100644
  					"-ObjC",
  					"-lc++",
  				);
--				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier).Keyboard";
 -				PRODUCT_NAME = AwesomeProject;
-+				PRODUCT_BUNDLE_IDENTIFIER = "com.example.demoapp";
++				PRODUCT_BUNDLE_IDENTIFIER = "com.example.demoapp.Keyboard";
 +				PRODUCT_NAME = "DemoApp";
  				SWIFT_VERSION = 5.0;
  				VERSIONING_SYSTEM = "apple-generic";
