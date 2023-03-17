@@ -147,15 +147,7 @@ export const getIosUpdateFilesContentOptions = ({
 
         // Replace bundle ID
         if (newBundleID) {
-          input = input.replace(
-            new RegExp(`PRODUCT_BUNDLE_IDENTIFIER = "${currentBundleId}`, 'g'),
-            `PRODUCT_BUNDLE_IDENTIFIER = "${newBundleID}`
-          );
-
-          input = input.replace(
-            new RegExp(`PRODUCT_BUNDLE_IDENTIFIER = ${currentBundleId}`, 'g'),
-            `PRODUCT_BUNDLE_IDENTIFIER = "${newBundleID}";`
-          );
+          input = input.replace(new RegExp(currentBundleId, 'g'), newBundleID);
         }
 
         return input;

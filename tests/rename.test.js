@@ -23,18 +23,18 @@ const getDiff = cwd => {
 };
 
 const resetGit = cwd => {
-  // shell.exec(`git reset -q HEAD -- .`, {
-  //   cwd,
-  //   silent: true,
-  // });
-  // shell.exec(`git clean -f -q -- .`, {
-  //   cwd,
-  //   silent: true,
-  // });
-  // shell.exec(`git checkout -q -- .`, {
-  //   cwd,
-  //   silent: true,
-  // });
+  shell.exec(`git reset -q HEAD -- .`, {
+    cwd,
+    silent: true,
+  });
+  shell.exec(`git clean -f -q -- .`, {
+    cwd,
+    silent: true,
+  });
+  shell.exec(`git checkout -q -- .`, {
+    cwd,
+    silent: true,
+  });
 };
 
 describe('rn-versions/0.70.6', () => {
@@ -73,8 +73,6 @@ describe('rn-versions/0.70.6', () => {
 
     const result = getDiff(cwd);
 
-    expect(true).toBe(false);
-
-    // expect(result).toMatchSnapshot();
+    expect(result).toMatchSnapshot();
   });
 });
