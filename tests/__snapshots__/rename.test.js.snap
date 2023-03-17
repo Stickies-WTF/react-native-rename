@@ -3276,16 +3276,5 @@ index 4f966bb..1075335 100644
      inherit! :complete
      # Pods for testing
    end
-diff --git a/tests/rn-versions/0.70.6/package.json b/tests/rn-versions/0.70.6/package.json
-index ffe8c2d..6b6235d 100644
---- a/tests/rn-versions/0.70.6/package.json
-+++ b/tests/rn-versions/0.70.6/package.json
-@@ -1,5 +1,5 @@
- {
--  "name": "awesomeproject",
-+  "name": "demoapp",
-   "version": "0.0.1",
-   "private": true,
-   "scripts": {
 "
 `;
