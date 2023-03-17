@@ -179,11 +179,11 @@ export const getIosCurrentBundleId = () => {
   const filepath = globbySync(normalizePath(path.join(APP_PATH, iosPbxProject)))[0];
   const contents = fs.readFileSync(filepath, 'utf8');
 
-  let matches = contents.match(new RegExp('PRODUCT_BUNDLE_IDENTIFIER = "(.*)"', ''));
+  let matches = contents.match(new RegExp('PRODUCT_BUNDLE_IDENTIFIER = "(.*)";', ''));
 
   if (matches && matches[1]) return matches[1];
 
-  matches = contents.match(new RegExp('PRODUCT_BUNDLE_IDENTIFIER = (.*)', ''));
+  matches = contents.match(new RegExp('PRODUCT_BUNDLE_IDENTIFIER = (.*);', ''));
 
   if (matches && matches[1]) return matches[1];
 
