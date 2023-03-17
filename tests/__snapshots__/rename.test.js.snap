@@ -717,6 +717,17 @@ index 4f966bb..1075335 100644
      inherit! :complete
      # Pods for testing
    end
+diff --git a/tests/rn-versions/0.70.6/package.json b/tests/rn-versions/0.70.6/package.json
+index ffe8c2d..6b6235d 100644
+--- a/tests/rn-versions/0.70.6/package.json
++++ b/tests/rn-versions/0.70.6/package.json
+@@ -1,5 +1,5 @@
+ {
+-  "name": "awesomeproject",
++  "name": "demoapp",
+   "version": "0.0.1",
+   "private": true,
+   "scripts": {
 "
 `;
 
@@ -1610,6 +1621,17 @@ index 4f966bb..1075335 100644
      inherit! :complete
      # Pods for testing
    end
+diff --git a/tests/rn-versions/0.70.6/package.json b/tests/rn-versions/0.70.6/package.json
+index ffe8c2d..6b6235d 100644
+--- a/tests/rn-versions/0.70.6/package.json
++++ b/tests/rn-versions/0.70.6/package.json
+@@ -1,5 +1,5 @@
+ {
+-  "name": "awesomeproject",
++  "name": "demoapp",
+   "version": "0.0.1",
+   "private": true,
+   "scripts": {
 "
 `;
 
@@ -1861,7 +1883,7 @@ diff --git a/tests/rn-versions/0.70.6/ios/AwesomeProject.xcodeproj/project.pbxpr
 similarity index 71%
 rename from tests/rn-versions/0.70.6/ios/AwesomeProject.xcodeproj/project.pbxproj
 rename to tests/rn-versions/0.70.6/ios/DemoApp.xcodeproj/project.pbxproj
-index 7a0fe27..be15a54 100644
+index 7a0fe27..b144211 100644
 --- a/tests/rn-versions/0.70.6/ios/AwesomeProject.xcodeproj/project.pbxproj
 +++ b/tests/rn-versions/0.70.6/ios/DemoApp.xcodeproj/project.pbxproj
 @@ -7,12 +7,12 @@
@@ -2302,7 +2324,7 @@ index 7a0fe27..be15a54 100644
  				);
 -				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier).Keyboard";
 -				PRODUCT_NAME = AwesomeProject;
-+				PRODUCT_BUNDLE_IDENTIFIER = "com.example.demoapp.Keyboard";
++				PRODUCT_BUNDLE_IDENTIFIER = "com.example.demoapp";
 +				PRODUCT_NAME = "DemoApp";
  				SWIFT_VERSION = 5.0;
  				VERSIONING_SYSTEM = "apple-generic";
@@ -2513,6 +2535,17 @@ index 4f966bb..1075335 100644
      inherit! :complete
      # Pods for testing
    end
+diff --git a/tests/rn-versions/0.70.6/package.json b/tests/rn-versions/0.70.6/package.json
+index ffe8c2d..6b6235d 100644
+--- a/tests/rn-versions/0.70.6/package.json
++++ b/tests/rn-versions/0.70.6/package.json
+@@ -1,5 +1,5 @@
+ {
+-  "name": "awesomeproject",
++  "name": "demoapp",
+   "version": "0.0.1",
+   "private": true,
+   "scripts": {
 "
 `;
 
@@ -2591,7 +2624,7 @@ diff --git a/tests/rn-versions/0.70.6/ios/AwesomeProject.xcodeproj/project.pbxpr
 similarity index 71%
 rename from tests/rn-versions/0.70.6/ios/AwesomeProject.xcodeproj/project.pbxproj
 rename to tests/rn-versions/0.70.6/ios/DemoApp.xcodeproj/project.pbxproj
-index 7a0fe27..be15a54 100644
+index 7a0fe27..b144211 100644
 --- a/tests/rn-versions/0.70.6/ios/AwesomeProject.xcodeproj/project.pbxproj
 +++ b/tests/rn-versions/0.70.6/ios/DemoApp.xcodeproj/project.pbxproj
 @@ -7,12 +7,12 @@
@@ -3032,7 +3065,7 @@ index 7a0fe27..be15a54 100644
  				);
 -				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier).Keyboard";
 -				PRODUCT_NAME = AwesomeProject;
-+				PRODUCT_BUNDLE_IDENTIFIER = "com.example.demoapp.Keyboard";
++				PRODUCT_BUNDLE_IDENTIFIER = "com.example.demoapp";
 +				PRODUCT_NAME = "DemoApp";
  				SWIFT_VERSION = 5.0;
  				VERSIONING_SYSTEM = "apple-generic";
@@ -3243,5 +3276,16 @@ index 4f966bb..1075335 100644
      inherit! :complete
      # Pods for testing
    end
+diff --git a/tests/rn-versions/0.70.6/package.json b/tests/rn-versions/0.70.6/package.json
+index ffe8c2d..6b6235d 100644
+--- a/tests/rn-versions/0.70.6/package.json
++++ b/tests/rn-versions/0.70.6/package.json
+@@ -1,5 +1,5 @@
+ {
+-  "name": "awesomeproject",
++  "name": "demoapp",
+   "version": "0.0.1",
+   "private": true,
+   "scripts": {
 "
 `;
